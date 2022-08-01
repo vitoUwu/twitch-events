@@ -7,7 +7,7 @@ const client = new TwitchChannel({
   clientId: "36u4cul3ap893ue26utsafm70fy1f2",
   clientSecret: "100qnv01t9bj1tfhzqyeqe5uw7tqw9",
   channel,
-  callbackUrl: "http://localhost:3000",
+  callbackUrl: "https://streamnotificator.up.railway.app/",
 });
 
 client.applyEventSubMiddleware(app);

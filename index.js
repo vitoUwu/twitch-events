@@ -72,7 +72,7 @@ app.listen(port, () => {
 function getSecret() {
     // TODO: Get secret from secure storage. This is the secret you pass 
     // when you subscribed to the event.
-    return 'test';
+    return 'testeteste';
 }
 
 // Build the message used to get the HMAC.

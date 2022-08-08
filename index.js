@@ -91,5 +91,11 @@ function getHmac(secret, message) {
 
 // Verify whether our hash matches the hash that Twitch passed in the header.
 function verifyMessage(hmac, verifySignature) {
-    return crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(verifySignature));
+  try {
+    const verif = crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(verifySignature));
+    return verif;
+  } catch(err) {
+    console.log(err);
+    return false;
+  }
 }

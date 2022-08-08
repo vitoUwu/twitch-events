@@ -1,7 +1,8 @@
+require("dotenv/config");
 const crypto = require('crypto')
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
     
 // Notification request headers
 const TWITCH_MESSAGE_ID = 'Twitch-Eventsub-Message-Id'.toLowerCase();

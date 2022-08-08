@@ -3,6 +3,7 @@ const crypto = require('crypto')
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
+const { default: axios } = require("axios");
     
 // Notification request headers
 const TWITCH_MESSAGE_ID = 'Twitch-Eventsub-Message-Id'.toLowerCase();
@@ -40,7 +41,11 @@ app.post('/eventsub', (req, res) => {
             console.log(`Event type: ${notification.subscription.type}`);
             console.log(JSON.stringify(notification.event, null, 4));
             
-            res.sendStatus(204);
+            axios.post("https://discord.com/api/webhooks/1006028733662117909/effsJFCqhxqRhNWqHk_ZpUEkQPf8znDFg_tRfnmwTsxPret_PPzxsH3oXwHio9kA1Uqo", {
+              content: `<@504717946124369937> ${notification.event.broadcaster_user_name} está online \nhttps://twitch.tv/${notification.event.broadcaster_user_name}!`,
+            }).then(() => {
+              res.sendStatus(204);
+            }).catch(err => console.log(err));            
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
             res.status(200).send(notification.challenge);

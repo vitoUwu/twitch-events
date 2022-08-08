@@ -42,7 +42,7 @@ app.post('/eventsub', (req, res) => {
             console.log(JSON.stringify(notification.event, null, 4));
             
             axios.post("https://discord.com/api/webhooks/1006028733662117909/effsJFCqhxqRhNWqHk_ZpUEkQPf8znDFg_tRfnmwTsxPret_PPzxsH3oXwHio9kA1Uqo", {
-              content: `<@504717946124369937> ${notification.event.broadcaster_user_name} está online \nhttps://twitch.tv/${notification.event.broadcaster_user_name}!`,
+              content: `<@504717946124369937> **${notification.event.broadcaster_user_name}** está online ! \nhttps://twitch.tv/${notification.event.broadcaster_user_name}`,
             }).then(() => {
               res.sendStatus(204);
             }).catch(err => console.log(err));            
